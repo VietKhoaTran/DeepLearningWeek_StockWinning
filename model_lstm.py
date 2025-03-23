@@ -44,8 +44,6 @@ class LSTMModel:
         df['TR'] = df[['diff', 'v1', 'v2']].max(axis=1)
         df['ATR'] = df['TR'].rolling(window=14).mean()
 
-
-
     def preprocess(self):
         if self.df is None:
             print("No df available")
@@ -68,8 +66,6 @@ class LSTMModel:
         split_index = int(0.8 * len(X))
         self.X_train, self.X_test = X[:split_index], X[split_index:]
         self.y_train, self.y_test = y[:split_index], y[split_index:]
-
-
 
     def get_df(self):
         try:
@@ -120,7 +116,7 @@ class LSTMModel:
         """Make predictions using the trained LSTM model."""
         if self.model is None:
             return
-
+        
         # Make predictions
         predictions = self.model.predict(self.X_test)
 
